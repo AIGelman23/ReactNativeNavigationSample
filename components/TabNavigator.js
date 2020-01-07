@@ -14,63 +14,46 @@ import { createMaterialTopTabNavigator } from "react-navigation-tabs";
 
 // Stack Navigation
 
-const HomeStack = createStackNavigator(
-  { HomeScreen }, // Gives ability to create title
-  {
-    Home: { screen: HomeScreen },
-    navigationOptions: {
-      tabBarLabel: "Home"
-    },
-    defaultNavigationOptions: {
-      // Change header for this stack
-      title: "Home Screen",
-      headerStyle: {
-        backgroundColor: "#000",
-        shadowColor: "#000",
-        shadowOffset: { width: 1, height: 2 },
-        shadowRadius: 1,
-        shadowOpacity: 0.3,
-        elevation: 2
-      },
-      headerTintColor: "#fff",
-      headerTitleStyle: {
-        fontWeight: "bold",
-        fontFamily: "Arial"
-      }
-    }
+const navigationOptionsStyle = (title) => ({
+  title,
+  headerStyle: {
+    backgroundColor: "#000"
+  },
+  headerTintColor: "#fff",
+  headerTitleStyle: {
+    fontWeight: "bold",
+    fontFamily: "Arial"
   }
-);
+})
 
-const SettingsStack = createStackNavigator(
-  { SettingsScreen }, // Gives ability to create title
-  {
-    navigationOptions: {
-      tabBarLabel: "Settings" // Change label of navigation tab
-    },
-    Settings: { screen: SettingsScreen },
-    defaultNavigationOptions: {
-      // Change header for this stack
-      title: "Settings Screen",
-      headerStyle: {
-        backgroundColor: "#000"
-      },
-      headerTintColor: "#fff",
-      headerTitleStyle: {
-        fontWeight: "bold",
-        fontFamily: "Arial"
-      }
-    }
-  }
-);
+const HomeStack = createStackNavigator({
+  Home: {
+    screen: HomeScreen,
+    navigationOptions: navigationOptionsStyle("Home Screen")
+  },
+});
 
-const DetailsStack = createStackNavigator(
-  // { DetailsScreen }, // Gives ability to create title
-  {
-    Details: { screen: DetailsScreen },
-    About: { screen: AboutScreen },
-    Developer: { screen: DeveloperScreen }
+const SettingsStack = createStackNavigator({
+  Settings: {
+    screen: SettingsScreen,
+    navigationOptions: navigationOptionsStyle("Settings Screen")
   }
-);
+});
+
+const DetailsStack = createStackNavigator({
+  Details: {
+    screen: DetailsScreen,
+    navigationOptions: navigationOptionsStyle("Details Screen")
+  },
+  About: {
+    screen: AboutScreen,
+    navigationOptions: navigationOptionsStyle("About Screen")
+  },
+  Developer: {
+    screen: DeveloperScreen,
+    navigationOptions: navigationOptionsStyle("Developer Screen")
+  }
+});
 
 // End Stack Navigation
 
